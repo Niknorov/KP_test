@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/film_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/fragment_film_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/fragment_films.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/genre.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/heading_films_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/DangO/StudioProjects/app/src/main/res/layout/heading_genres_item.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

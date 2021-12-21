@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="genre">
+        <item name="android:background">#4A4A4A</item>
+        <item name="android:textColor">#BFFFFFFF</item>
+    </style>
+
+    <style name="films">
+        <item name="android:background">#303030</item>
+        <item name="android:textColor">#BFFFFFFF</item>
+    </style>
+    <style name="genres">
+        <item name="android:background">#303030</item>
+        <item name="android:textColor">#BFFFFFFF</item>
+    </style>
+
+    <style name="film_item_text">
+        <item name="android:background" >#66000000</item>
+        <item name="android:textColor">#BFFFFFFF</item>
+    </style>
+
+</resources>
