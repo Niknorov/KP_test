@@ -31,7 +31,7 @@ class HeadingFilmsHolder(
 ) : RecyclerView.ViewHolder(headingFilmsItemBinding.root) {
 
     fun bind(headingFilms: ListItem.HeadingFilms) {
-        headingFilmsItemBinding.headingFilms.text = headingFilms.toString()
+        headingFilmsItemBinding.headingFilms.text = "Фильмы"
     }
 }
 
@@ -40,6 +40,6 @@ class HeadingGenresHolder(
 ) : RecyclerView.ViewHolder(headingGenresItemBinding.root) {
 
     fun bind(headingGenres: ListItem.HeadingGenres) {
-        headingGenresItemBinding.headingGenres.text = headingGenres.toString()
+        headingGenresItemBinding.headingGenres.text = "Жанры"
     }
 }

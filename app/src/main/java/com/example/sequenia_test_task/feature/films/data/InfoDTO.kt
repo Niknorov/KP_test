@@ -10,8 +10,13 @@ data class InfoDTO(
     @SerializedName("name") val name: String,
     @SerializedName("year") val year: Int,
     @SerializedName("rating") val rating: Double,
-    @SerializedName("image_url") val imageUrl: String,
-    @SerializedName("description") val description: String,
+    @SerializedName("image_url") val imageUrl: String?,
+    @SerializedName("description") val description: String?,
     @SerializedName("genres") val genres: List<String>,
 
     )
+
+data class FilmsDTO(
+    @SerializedName("films") val films: List<InfoDTO>
+
+)

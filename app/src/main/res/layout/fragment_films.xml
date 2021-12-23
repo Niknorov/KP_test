@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".feature.films.presentation.FilmsFragment">
+    tools:context=".feature.films.presentation.FilmsFragment"
+    android:background="#1C1C1C">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,8 +26,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/filmsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/film_item" />
 
 </LinearLayout>

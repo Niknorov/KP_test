@@ -9,7 +9,7 @@ class FilmRepositoryImpl(
 
 
     override suspend fun getFilm(): List<FilmModel> {
-        return filmRemoteDataSource.getFilm().map {
+        return filmRemoteDataSource.getFilm().films.map {
             FilmModel(
                 id = it.id,
                 localizedName = it.localizedName,
@@ -17,9 +17,9 @@ class FilmRepositoryImpl(
                 year = it.year,
                 rating = it.rating,
                 imageUrl = it.imageUrl,
-                description = it.description,
+                description = it.description.orEmpty(),
                 genres = it.genres,
-                )
+            )
         }
     }
 }

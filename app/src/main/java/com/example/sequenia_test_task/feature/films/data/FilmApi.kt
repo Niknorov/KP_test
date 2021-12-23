@@ -5,5 +5,5 @@ import retrofit2.http.GET
 interface FilmApi {
 
     @GET(value = "films.json")
-    suspend fun getFilm() : List<InfoDTO>
+    suspend fun getFilm() : FilmsDTO
 }

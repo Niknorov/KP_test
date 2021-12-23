@@ -8,8 +8,8 @@ data class FilmModel(
     val name: String,
     val year: Int,
     val rating: Double,
-    val imageUrl: String,
+    val imageUrl: String?,
     val description: String,
-    val genres: String,
+    val genres: List<String>,
 
     )

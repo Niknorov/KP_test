@@ -7,9 +7,10 @@ import com.example.sequenia_test_task.databinding.FilmItemBinding
 import com.example.sequenia_test_task.databinding.GenreBinding
 import com.example.sequenia_test_task.databinding.HeadingFilmsItemBinding
 import com.example.sequenia_test_task.databinding.HeadingGenresItemBinding
+import com.example.sequenia_test_task.feature.films.domain.FilmModel
 import java.lang.IllegalArgumentException
 
-class FilmsRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private companion object {
 
@@ -69,6 +70,17 @@ class FilmsRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
     }
+
+    override fun getItemViewType(position: Int): Int =
+        if (items[position] is ListItem.FilmItem) {
+            FILM_VIEW_TYPE
+        } else if (items[position] is ListItem.Genre) {
+            GENRE_VIEW_TYPE
+        } else if (items[position] is ListItem.HeadingGenres) {
+            HEADING_GENRES_VIEW_TYPE
+        } else {
+            HEADING_FILMS_VIEW_TYPE
+        }
 
     override fun getItemCount(): Int =
         items.size

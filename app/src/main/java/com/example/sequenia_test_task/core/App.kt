@@ -15,7 +15,6 @@ class App : Application() {
             modules(
                 networkModule,
                 filmsModule,
-
                 )
         }
     }
