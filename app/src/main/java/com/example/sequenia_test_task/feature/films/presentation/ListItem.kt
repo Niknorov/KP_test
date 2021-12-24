@@ -8,7 +8,8 @@ sealed class ListItem {
     ) : ListItem()
 
     data class Genre(
-        val genre: String
+        val genre: String,
+        var isActive: Boolean = false
     ) : ListItem()
 
     object HeadingFilms : ListItem()

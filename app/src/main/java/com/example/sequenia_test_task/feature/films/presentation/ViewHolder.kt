@@ -24,6 +24,7 @@ class GenreViewHolder(
     fun bind(genreItem: ListItem.Genre) {
         genreBinding.genre.text = genreItem.genre
     }
+
 }
 
 class HeadingFilmsHolder(

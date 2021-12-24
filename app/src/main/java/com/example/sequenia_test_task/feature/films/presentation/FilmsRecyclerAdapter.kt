@@ -20,6 +20,8 @@ class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         const val HEADING_GENRES_VIEW_TYPE = 3
     }
 
+    var onItemClick: ((ListItem) -> Unit)? = null
+
     var items: List<ListItem> = emptyList()
         set(value) {
             field = value
@@ -65,8 +67,14 @@ class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (holder) {
             is FilmViewHolder -> holder.bind(items[position] as ListItem.FilmItem)
             is GenreViewHolder -> holder.bind(items[position] as ListItem.Genre)
+            // is GenreViewHolder -> holder.itemView.setOnClickListener {
+            //     onItemClick?.invoke(items[position])
+            // }
             is HeadingFilmsHolder -> holder.bind(items[position] as ListItem.HeadingFilms)
             is HeadingGenresHolder -> holder.bind(items[position] as ListItem.HeadingGenres)
+        }
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(items[position])
         }
 
     }
