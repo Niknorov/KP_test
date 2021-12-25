@@ -117,7 +117,7 @@ class FilmsFragment : Fragment(), FilmView {
                     resultList.removeAll(filmByGenreToListItem)
                     resultList.addAll(filmList)
                     adapter.items = resultList
-
+                    it.isActive = false
                 }
 
             }

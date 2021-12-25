@@ -1,5 +1,6 @@
 package com.example.sequenia_test_task.feature.films.presentation
 
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sequenia_test_task.databinding.FilmItemBinding
 import com.example.sequenia_test_task.databinding.GenreBinding
@@ -22,7 +23,14 @@ class GenreViewHolder(
 ) : RecyclerView.ViewHolder(genreBinding.root) {
 
     fun bind(genreItem: ListItem.Genre) {
-        genreBinding.genre.text = genreItem.genre
+        if (genreItem.isActive) {
+            genreBinding.genre.setBackgroundColor(Color.parseColor("#89CFEF"))
+            genreBinding.genre.text = genreItem.genre
+        } else {
+            genreBinding.genre.setBackgroundColor(Color.parseColor("#303030"))
+            genreBinding.genre.text = genreItem.genre
+        }
+
     }
 
 }
