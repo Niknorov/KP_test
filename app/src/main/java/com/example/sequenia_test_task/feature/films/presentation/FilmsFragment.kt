@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.sequenia_test_task.R
 import com.example.sequenia_test_task.databinding.FragmentFilmsBinding
 import com.example.sequenia_test_task.feature.films.domain.FilmModel
@@ -20,8 +19,6 @@ class FilmsFragment : Fragment(), FilmView {
     private val presenter: FilmPresenter by inject()
 
     private fun initPresenter() {
-
-        //????/
         presenter.attachView(this)
     }
 
@@ -39,18 +36,11 @@ class FilmsFragment : Fragment(), FilmView {
         binding.filmsRecyclerView.layoutManager = LinearLayoutManager(context)
         initPresenter()
 
-        val swipeRefresh: SwipeRefreshLayout = binding.swipeRefresh
-
-        swipeRefresh.setOnRefreshListener {
-            presenter.getFilms()
-        }
         presenter.getFilms()
     }
 
 
     override suspend fun showFilm(films: List<FilmModel>) {
-
-        binding.swipeRefresh.isRefreshing = false
 
         val adapter = FilmsRecyclerAdapter()
         binding.filmsRecyclerView.adapter = adapter
@@ -127,7 +117,6 @@ class FilmsFragment : Fragment(), FilmView {
     }
 
     override fun showError() {
-        binding.swipeRefresh.isRefreshing = false
         Toast.makeText(context, R.string.internetError, Toast.LENGTH_SHORT).show()
     }
 

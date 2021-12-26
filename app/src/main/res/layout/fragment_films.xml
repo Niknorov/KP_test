@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1C1C1C"
     android:orientation="vertical"
-    tools:context=".feature.films.presentation.FilmsFragment"
-    android:background="#1C1C1C">
+    tools:context=".feature.films.presentation.FilmsFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,18 +25,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filmsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:listitem="@layout/film_item" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/filmsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/film_item" />
-
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
