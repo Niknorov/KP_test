@@ -7,9 +7,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sequenia_test_task.databinding.FragmentFilmInfoBinding
 import com.example.sequenia_test_task.databinding.FragmentFilmsBinding
+import com.example.sequenia_test_task.feature.filmInfo.presentation.FilmInfoFragment
 import com.example.sequenia_test_task.feature.films.domain.FilmModel
 import org.koin.android.ext.android.inject
 
@@ -17,7 +20,6 @@ class FilmsFragment : Fragment(), FilmView {
 
     private lateinit var binding: FragmentFilmsBinding
     private val presenter: FilmPresenter by inject()
-
 
     private fun initPresenter() {
 
@@ -38,28 +40,15 @@ class FilmsFragment : Fragment(), FilmView {
         //binding.filmsRecyclerView.layoutManager = GridLayoutManager(context, 2)
         binding.filmsRecyclerView.layoutManager = LinearLayoutManager(context)
         initPresenter()
+
         presenter.getFilms()
 
-
-        binding.filmsRecyclerView.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                return false
-            }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-
-            }
-
-        })
 
     }
 
 
     override suspend fun showFilm(films: List<FilmModel>) {
+
 
         val adapter = FilmsRecyclerAdapter()
         binding.filmsRecyclerView.adapter = adapter
@@ -120,6 +109,17 @@ class FilmsFragment : Fragment(), FilmView {
                     it.isActive = false
                 }
 
+            } else if (it is ListItem.FilmItem) {
+
+
+                val filmModel = films.first { film ->
+                    film.localizedName == it.localizedName
+                }
+
+                val action =
+                    FilmsFragmentDirections.actionFilmsFragmentToFilmInfoFragment(filmModel)
+
+                findNavController().navigate(action)
             }
         }
     }

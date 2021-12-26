@@ -8,14 +8,19 @@
     <fragment
         android:id="@+id/filmsFragment"
         android:name="com.example.sequenia_test_task.feature.films.presentation.FilmsFragment"
-        android:label="FilmsFragment" >
+        android:label="FilmsFragment"
+        tools:layout="@layout/fragment_films">
         <action
             android:id="@+id/action_filmsFragment_to_filmInfoFragment"
-            app:destination="@id/filmInfoFragment" />
+            app:destination="@id/filmInfoFragment"/>
     </fragment>
     <fragment
         android:id="@+id/filmInfoFragment"
         android:name="com.example.sequenia_test_task.feature.filmInfo.presentation.FilmInfoFragment"
         android:label="fragment_film_info"
-        tools:layout="@layout/fragment_film_info" />
+        tools:layout="@layout/fragment_film_info" >
+        <argument
+            android:name="filmModel"
+            app:argType="com.example.sequenia_test_task.feature.films.domain.FilmModel" />
+    </fragment>
 </navigation>

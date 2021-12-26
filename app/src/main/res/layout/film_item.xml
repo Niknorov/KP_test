@@ -5,8 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
-    app:cardCornerRadius="12dp"
-    >
+    app:cardCornerRadius="12dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="180dp"
@@ -30,7 +29,6 @@
             android:layout_height="40dp"
             android:ellipsize="end"
             android:gravity="center"
-
             android:maxLines="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

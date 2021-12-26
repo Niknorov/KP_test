@@ -21,4 +21,9 @@
         <item name="android:textColor">#BFFFFFFF</item>
     </style>
 
+    <style name="film_info_text">
+        <item name="android:background">#1C1C1C</item>
+        <item name="android:textColor">#BFFFFFFF</item>
+    </style>
+
 </resources>
