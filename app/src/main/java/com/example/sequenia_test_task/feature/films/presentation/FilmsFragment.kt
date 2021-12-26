@@ -1,18 +1,16 @@
 package com.example.sequenia_test_task.feature.films.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.sequenia_test_task.databinding.FragmentFilmInfoBinding
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.sequenia_test_task.R
 import com.example.sequenia_test_task.databinding.FragmentFilmsBinding
-import com.example.sequenia_test_task.feature.filmInfo.presentation.FilmInfoFragment
 import com.example.sequenia_test_task.feature.films.domain.FilmModel
 import org.koin.android.ext.android.inject
 
@@ -24,13 +22,13 @@ class FilmsFragment : Fragment(), FilmView {
     private fun initPresenter() {
 
         //????/
-        presenter?.attachView(this)
+        presenter.attachView(this)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFilmsBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -41,14 +39,18 @@ class FilmsFragment : Fragment(), FilmView {
         binding.filmsRecyclerView.layoutManager = LinearLayoutManager(context)
         initPresenter()
 
+        val swipeRefresh: SwipeRefreshLayout = binding.swipeRefresh
+
+        swipeRefresh.setOnRefreshListener {
+            presenter.getFilms()
+        }
         presenter.getFilms()
-
-
     }
 
 
     override suspend fun showFilm(films: List<FilmModel>) {
 
+        binding.swipeRefresh.isRefreshing = false
 
         val adapter = FilmsRecyclerAdapter()
         binding.filmsRecyclerView.adapter = adapter
@@ -122,6 +124,11 @@ class FilmsFragment : Fragment(), FilmView {
                 findNavController().navigate(action)
             }
         }
+    }
+
+    override fun showError() {
+        binding.swipeRefresh.isRefreshing = false
+        Toast.makeText(context, R.string.internetError, Toast.LENGTH_SHORT).show()
     }
 
 

@@ -6,5 +6,5 @@ interface FilmView {
 
 
     suspend fun showFilm(films: List<FilmModel>)
-
+    fun showError()
 }

@@ -7,8 +7,6 @@ import com.example.sequenia_test_task.databinding.FilmItemBinding
 import com.example.sequenia_test_task.databinding.GenreBinding
 import com.example.sequenia_test_task.databinding.HeadingFilmsItemBinding
 import com.example.sequenia_test_task.databinding.HeadingGenresItemBinding
-import com.example.sequenia_test_task.feature.films.domain.FilmModel
-import java.lang.IllegalArgumentException
 
 class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
