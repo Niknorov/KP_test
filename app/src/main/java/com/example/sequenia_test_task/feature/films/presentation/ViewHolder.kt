@@ -2,6 +2,7 @@ package com.example.sequenia_test_task.feature.films.presentation
 
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sequenia_test_task.R
 import com.example.sequenia_test_task.databinding.FilmItemBinding
 import com.example.sequenia_test_task.databinding.GenreBinding
 import com.example.sequenia_test_task.databinding.HeadingFilmsItemBinding
@@ -16,6 +17,7 @@ class FilmViewHolder(
         Picasso.get().load(filmItem.image).into(filmItemBinding.image)
         filmItemBinding.localizedName.text = filmItem.localizedName
     }
+
 }
 
 class GenreViewHolder(
@@ -39,8 +41,8 @@ class HeadingFilmsHolder(
     private val headingFilmsItemBinding: HeadingFilmsItemBinding
 ) : RecyclerView.ViewHolder(headingFilmsItemBinding.root) {
 
-    fun bind(headingFilms: ListItem.HeadingFilms) {
-        headingFilmsItemBinding.headingFilms.text = "Фильмы"
+    fun bind() {
+        headingFilmsItemBinding.headingFilms.setText(R.string.films)
     }
 }
 
@@ -48,7 +50,7 @@ class HeadingGenresHolder(
     private val headingGenresItemBinding: HeadingGenresItemBinding
 ) : RecyclerView.ViewHolder(headingGenresItemBinding.root) {
 
-    fun bind(headingGenres: ListItem.HeadingGenres) {
-        headingGenresItemBinding.headingGenres.text = "Жанры"
+    fun bind() {
+        headingGenresItemBinding.headingGenres.setText(R.string.genres)
     }
 }

@@ -32,7 +32,8 @@ class FilmsFragment : Fragment(), FilmView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.filmsRecyclerView.layoutManager = GridLayoutManager(context, 2)
+
+
         binding.filmsRecyclerView.layoutManager = LinearLayoutManager(context)
         initPresenter()
 
@@ -44,10 +45,10 @@ class FilmsFragment : Fragment(), FilmView {
 
         val adapter = FilmsRecyclerAdapter()
         binding.filmsRecyclerView.adapter = adapter
-        //добавил заголовок жанры
+
         val resultList: MutableList<ListItem> = mutableListOf()
         resultList.add(ListItem.HeadingGenres)
-        //добавил сами жанры
+
         val genresList: MutableList<ListItem> = mutableListOf()
 
         films.forEach {
@@ -59,9 +60,9 @@ class FilmsFragment : Fragment(), FilmView {
             })
         }
         resultList.addAll(genresList.distinct())
-        //добавил заголовок фильмы
+
         resultList.add(ListItem.HeadingFilms)
-        //добавил сами фильмы
+
         val filmList = films.map {
             ListItem.FilmItem(
                 it.localizedName,
@@ -70,13 +71,11 @@ class FilmsFragment : Fragment(), FilmView {
         }
         resultList.addAll(filmList)
         adapter.items = resultList
-        adapter.onItemClick = {
+        adapter.onItemClick = { listItem ->
 
-            if (it is ListItem.Genre) {
-                Toast.makeText(context, "вы нажали на $it", Toast.LENGTH_SHORT).show()
-                //состояние
-                val genreInRecycler: String = it.genre
-                //список фильмов с нужным жанром
+            if (listItem is ListItem.Genre) {
+                val genreInRecycler: String = listItem.genre
+
                 val filmByGenre = films.filter {
                     it.genres.contains(genreInRecycler)
                 }
@@ -87,25 +86,30 @@ class FilmsFragment : Fragment(), FilmView {
                     )
                 }
 
-                if (!it.isActive) {
+                if (!listItem.isActive) {
 
                     resultList.removeAll(filmList)
                     resultList.addAll(filmByGenreToListItem)
                     adapter.items = resultList
-                    it.isActive = true
+                    resultList.forEach {
+                        if (it is ListItem.Genre) {
+                            it.isActive = false
+                        }
+                    }
+                    listItem.isActive = true
                 } else {
 
                     resultList.removeAll(filmByGenreToListItem)
                     resultList.addAll(filmList)
                     adapter.items = resultList
-                    it.isActive = false
+                    listItem.isActive = false
                 }
 
-            } else if (it is ListItem.FilmItem) {
+            } else if (listItem is ListItem.FilmItem) {
 
 
                 val filmModel = films.first { film ->
-                    film.localizedName == it.localizedName
+                    film.localizedName == listItem.localizedName
                 }
 
                 val action =

@@ -65,11 +65,8 @@ class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (holder) {
             is FilmViewHolder -> holder.bind(items[position] as ListItem.FilmItem)
             is GenreViewHolder -> holder.bind(items[position] as ListItem.Genre)
-            // is GenreViewHolder -> holder.itemView.setOnClickListener {
-            //     onItemClick?.invoke(items[position])
-            // }
-            is HeadingFilmsHolder -> holder.bind(items[position] as ListItem.HeadingFilms)
-            is HeadingGenresHolder -> holder.bind(items[position] as ListItem.HeadingGenres)
+            is HeadingFilmsHolder -> holder.bind()
+            is HeadingGenresHolder -> holder.bind()
         }
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(items[position])
@@ -90,6 +87,5 @@ class FilmsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int =
         items.size
-
 
 }

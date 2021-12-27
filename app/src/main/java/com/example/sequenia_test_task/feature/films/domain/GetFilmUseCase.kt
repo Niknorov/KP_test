@@ -5,6 +5,13 @@ class GetFilmUseCase(
 ) {
 
     suspend operator fun invoke(): List<FilmModel> {
-        return filmRepository.getFilm()
+
+
+        val filmList = filmRepository.getFilm()
+        return filmList.sortedBy {
+            it.localizedName
+        }
+
+
     }
 }
